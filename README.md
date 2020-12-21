@@ -1,7 +1,8 @@
 # Vimotion
 
+## Setup Vimotion
 
-### Reuqirements (packages are available to install with pip):
+#### Reuqirements (packages are available to install with pip):
 - Python 3.5
 - OpenSMILE
 - Flask
@@ -24,7 +25,7 @@
 - Pandas
 
 
-Adjust the paths inside the following files:
+#### Adjust the paths inside the following files:
 - audio_model_arousal.py
 - audio_model_valence.py
 - video_model_arousal.py
