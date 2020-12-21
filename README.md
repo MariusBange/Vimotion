@@ -1,6 +1,6 @@
 # Vimotion
 
-Reuqirements (packages are available to install with pip):
+### Reuqirements (packages are available to install with pip):
 - Python 3.5
 - OpenSMILE
 - Flask
@@ -37,7 +37,7 @@ Adjust the paths inside the following files:
 Now you are ready to go!
 
 
-### Add file(s) to the audio data set:
+#### Add file(s) to the audio data set:
 - create a folder (not inside Vimotion!)
 - copy or move the audio files you want to add into this folder
 - audio files should be at least 40 seconds!
@@ -57,7 +57,7 @@ Now you are ready to go!
 - when running is completed, add information of title (second column) and source (third column, i.e. YouTube link) to the corresponding lines in metadata.csv (static/datasets/audio)
 
 
-### Remove file(s) from audio data set:
+#### Remove file(s) from audio data set:
 - list the file names to delete in the "files_to_remove" array in "reduce_audio_dataset.py" WITHOUT the file ending (i.e. "2" instead of "2.mp3")
 - run "reduce_audio_dataset.py"
 
