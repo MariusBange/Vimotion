@@ -1,7 +1,6 @@
 # Vimotion
 
 ## Setup Vimotion
-
 **Reuqirements** (packages are available to install with pip):
 - Python 3.5
 - OpenSMILE
