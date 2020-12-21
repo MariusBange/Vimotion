@@ -1,4 +1,5 @@
 # Vimotion
+Vimotion is a Flask-based Webapp for emotion based matching of audio and video.
 
 ## Setup Vimotion
 **Requirements** (packages are available to install with pip):
