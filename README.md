@@ -1,5 +1,6 @@
 # Vimotion
 
+
 ### Reuqirements (packages are available to install with pip):
 - Python 3.5
 - OpenSMILE
@@ -36,6 +37,7 @@ Adjust the paths inside the following files:
 
 Now you are ready to go!
 
+---
 
 #### How to add file(s) to the audio data set:
 - create a folder (not inside Vimotion!)
