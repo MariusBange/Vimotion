@@ -31,7 +31,7 @@ Adjust the path, or if needed the full command, in "feature_extraction_emobase20
 If you don't use Python3.7 adjust the commands in vimotion.py line 408-424.
 
 
-If you get this error on linking a YouTube-video ´´´urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1045)>´´´, from the Vimotion directory run this command: ´´´open /Applications/Python\ 3.7/Install\ Certificates.command
+If you get this error on linking a YouTube-video ```urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1045)```, from the Vimotion directory run this command: ```open /Applications/Python\ 3.7/Install\ Certificates.command
 
 
 Vimotion is now ready to run!
