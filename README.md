@@ -3,7 +3,7 @@ Vimotion is a Flask-based Webapp for emotion based matching of audio and video.
 
 ## Setup Vimotion
 **Requirements** (packages are available to install with pip):
-- Python 3.5
+- Python 3.7 or before
 - OpenSMILE
 - Flask
 - Pytube
@@ -25,18 +25,19 @@ Vimotion is a Flask-based Webapp for emotion based matching of audio and video.
 - Pandas
 
 
-**Adjust the paths inside the following files:**
-- audio_model_arousal.py
-- audio_model_valence.py
-- video_model_arousal.py
-- video_model_valence.py
-- feature_extraction_ResNet50.py
-- feature_extraction_I3D_RGB.py
-- feature_extraction_FlowNetS.py
-- feature_extraction_VGGish.py
-- feature_extraction_emobase2010_320_40.py
+Adjust the path, or if needed the full command, in "feature_extraction_emobase2010_320_40.py" line 26.
 
-Now you are ready to go!
+
+If you don't use Python3.7 adjust the commands in vimotion.py line 408-424.
+
+
+If you get this error on linking a YouTube-video:
+"urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1045)>"
+from the Vimotion directory run this command:
+"open /Applications/Python\ 3.7/Install\ Certificates.command"
+
+
+Vimotion is now ready to run!
 
 ## Change data sets
 
