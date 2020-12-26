@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h5>Confirm recording</h5>
+    <div class="content-section">
+        {% if recording != '' %}
+            <div class="row" id="recording_display">
+                <video id="recording" width="100%" height="100%" controls>
+                    <source src="{{'static/uploads/video/' + recording}}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <a class="btn btn-md btn-outline-secondary mb-2" href="{{ url_for('camera') }}" style="width: 100%; margin-top: 10px">Back</a>
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-md btn-success mb-2" href="{{ url_for('waiting', data_type='video', name=encoded) }}" style="width: 100%; margin-top: 10px">Continue</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock content %}

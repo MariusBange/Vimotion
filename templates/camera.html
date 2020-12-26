@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h5>Record video</h5>
+    <div class="content-section">
+        <div class="row">
+            <img src="{{ url_for('video_viewer') }}" style="width: 100%; height: 100%">
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-4">
+                <h1 id="timer_up">00:00</h1>
+            </div>
+            <div class="col-4">
+                <h1 style="text-align: center" id="recording_time"></h1>
+            </div>
+            <div class="col-4">
+                <h1 style="text-align: right" id="timer_down"></h1>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-4">
+                <a class="btn btn-outline-secondary mb-2" id="cancel" href="/video" style="width: 100%">Cancel</a>
+            </div>
+            <div class="col-4">
+                <button class ="btn btn-outline-danger mb-2" id="record" style="width: 100%">Record</button>
+            </div>
+            <div class="col-4">
+                <a href="{{ url_for('confirm_recording') }}"><button class ="btn btn-outline-success mb-2" id="continue" style="width: 100%" disabled>Continue</button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='camera.js') }}"></script>
+{% endblock content %}

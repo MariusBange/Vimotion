@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Matching Algorithm</h1>
+    <div class="content-section">
+        <p>Please select an algorithm for matching:</p>
+        <form method="POST" enctype="multipart/form-data">
+            <select name="matching" id="matching" onchange="this.form.submit()" style="margin-bottom: 20px">
+                {% if matching == 'approx' %}
+                    <option value="">Select a matching algorithm</option>
+                    <option selected value="approx">Approximation</option>
+                    <option value="approx_w">Approximation weighted (recommended)</option>
+                    <option value="approx_mse">Approximation mean squared error</option>
+                    <option value="offline">Off-line</option>
+                    <option value="offline_w">Off-line weighted</option>
+                    <option value="offline_mse">Off-line mean squared error</option>
+                    <option value="random">Random</option>
+                {% elif matching == 'approx_w' %}
+                    <option value="">Select a matching algorithm</option>
+                    <option value="approx">Approximation</option>
+                    <option selected value="approx_w">Approximation weighted (recommended)</option>
+                    <option value="approx_mse">Approximation mean squared error</option>
+                    <option value="offline">Off-line</option>
+                    <option value="offline_w">Off-line weighted</option>
+                    <option value="offline_mse">Off-line mean squared error</option>
+                    <option value="random">Random</option>
+                {% elif matching == 'approx_mse' %}
+                    <option value="">Select a matching algorithm</option>
+                    <option value="approx">Approximation</option>
+                    <option value="approx_w">Approximation weighted (recommended)</option>
+                    <option selected value="approx_mse">Approximation mean squared error</option>
+                    <option value="offline">Off-line</option>
+                    <option value="offline_w">Off-line weighted</option>
+                    <option value="offline_mse">Off-line mean squared error</option>
+                    <option value="random">Random</option>
+                {% elif matching == 'offline' %}
+                    <option value="">Select a matching algorithm</option>
+                    <option value="approx">Approximation</option>
+                    <option value="approx_w">Approximation weighted (recommended)</option>
+                    <option value="approx_mse">Approximation mean squared error</option>
+                    <option selected value="offline">Off-line</option>
+                    <option value="offline_w">Off-line weighted</option>
+                    <option value="offline_mse">Off-line mean squared error</option>
+                    <option value="random">Random</option>
+                {% elif matching == 'offline_w' %}
+                    <option value="">Select a matching algorithm</option>
+                    <option value="approx">Approximation</option>
+                    <option value="approx_w">Approximation weighted (recommended)</option>
+                    <option value="approx_mse">Approximation mean squared error</option>
+                    <option value="offline">Off-line</option>
+                    <option selected value="offline_w">Off-line weighted</option>
+                    <option value="offline_mse">Off-line mean squared error</option>
+                    <option value="random">Random</option>
+                {% elif matching == 'offline_mse' %}
+                    <option value="">Select a matching algorithm</option>
+                    <option value="approx">Approximation</option>
+                    <option value="approx_w">Approximation weighted (recommended)</option>
+                    <option value="approx_mse">Approximation mean squared error</option>
+                    <option value="offline">Off-line</option>
+                    <option value="offline_w">Off-line weighted</option>
+                    <option selected value="offline_mse">Off-line mean squared error</option>
+                    <option value="random">Random</option>
+                {% elif matching == 'random' %}
+                    <option value="">Select a matching algorithm</option>
+                    <option value="approx">Approximation</option>
+                    <option value="approx_w">Approximation weighted (recommended)</option>
+                    <option value="approx_mse">Approximation mean squared error</option>
+                    <option value="offline">Off-line</option>
+                    <option value="offline_w">Off-line weighted</option>
+                    <option value="offline_mse">Off-line mean squared error</option>
+                    <option selected value="random">Random</option>
+                {% else %}
+                    <option selected value="">Select a matching algorithm</option>
+                    <option value="approx">Approximation</option>
+                    <option value="approx_w">Approximation weighted (recommended)</option>
+                    <option value="approx_mse">Approximation mean squared error</option>
+                    <option value="offline">Off-line</option>
+                    <option value="offline_w">Off-line weighted</option>
+                    <option value="offline_mse">Off-line mean squared error</option>
+                    <option value="random">Random</option>
+                {% endif %}
+            </select>
+        </form>
+        {% if matching == 'approx' %}
+            <p>Approximation matching iterates through the input file to find items for the result step by step by the smallest avarage distance.</p>
+        {% elif matching == 'approx_w' %}
+            <p>Approximation matching iterates through the input file to find items for the result step by step by the smallest avarage distance.<br>
+            Values of arousal and valence are weighted to optimize the result.</p>
+        {% elif matching == 'approx_mse' %}
+            <p>Approximation matching iterates through the input file to find items for the result step by step by the smallest avarage distance.<br>
+            Values of arousal and valence are weighted to optimize the result.<br>
+            Mean squared error means that the distances of each value for value and aroual are squared to evaluate the similarity of items.<br>
+            This is useful if you think the trend of the matching items should be more important than the actual avarage distance.</p>
+        {% elif matching == 'offline' %}
+            <p>Off-line matching allows only longer items as solution, so there will be only one item used from the data set.<br>
+            To have a better match, use a video less than 45 seconds.</p>
+        {% elif matching == 'offline_w' %}
+            <p>Off-line matching allows only longer items as solution, so there will be only one item used from the data set.<br>
+            To have a better match, use a video less than 45 seconds.<br>
+            Values of arousal and valence are weighted to optimize the result.<br></p>
+        {% elif matching == 'offline_mse' %}
+            <p>Off-line matching allows only longer items as solution, so there will be only one item used from the data set.<br>
+            To have a better match, use a video less than 45 seconds.<br>
+            Values of arousal and valence are weighted to optimize the result.<br>
+            Mean squared error means that the distances of each value for value and aroual are squared to evaluate the similarity of items.<br>
+            This is useful if you think the trend of the matching items should be more important than the actual avarage distance.</p>
+        {% elif matching == 'random' %}
+            <p>Random matching selects random items from the data set. No emotions involved.</p>
+        {% endif %}
+    </div>
+    {%if matching != '' %}
+        <div class="content-section">
+            <p>Please select, if you want to</p>
+            <ul>
+                <li>upload, record or link a video to find a matching song</li>
+                <li>or upload or link a song to find a matching video</li>
+            </ul>
+            <div class="row" style="margin-left: 0px">
+                <a class="btn btn-outline-secondary" href="/video">Find a song</a>
+            </div>
+            <div class="row" style="margin-top: 10px; margin-left: 0px">
+                <a class="btn btn-outline-secondary" href="/audio">Find a video</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock content %}

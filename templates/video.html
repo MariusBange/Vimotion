@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Find a song</h1>
+    <p>Upload, record or link a video to find a matching song.<br>
+    Please only upload <b>videos longer than 5 second</b> and <b>shorter than 5 minutes</b>, because otherwise the feature extraction will take too long.<br>
+    All uploaded files and files based on them of them will be deleted after 24 hours.<br>
+    The longer the uploaded video, the longer it will take to process it.</p>
+    <div class="content-section">
+        <form action="" class="form-inline" method="POST" enctype="multipart/form-data">
+            <div class="form-group col-12 col-md-3 col-lg-2">
+                <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" style="padding-right: 5px" title="Supported file types: .avi, .flv, .mov, .mp4, .mpeg, .wmv"></i>
+                <label class="form-label" for="userUpload">Upload a video:</label>
+            </div>
+            <div class="col-12 col-md-6 col-lg-8">
+                <input type="file" class="form-data" id="userUpload" name="userUpload" style="width: 100%" accept=".avi, .flv, .mov, .mp4, .mpeg, .wmv">
+            </div>
+            <div class="col-12 col-md-3 col-lg-2">
+                <button type="submit" class="btn btn-md btn-outline-secondary mb-2" id="upload_user_file" style="width: 100%" disabled>Upload</button>
+            </div>
+        </form>
+        {% if user_upload != '' and error != '' and video_link == '' %}
+            <div class="form-inline" id="upload_error_form">
+                <div class="col-0 col-md-3 col-lg-2">
+                </div>
+                <div class="col-12 col-md-6 col-lg-8" style="height: 25px">
+                    <p style="color: #cb444b" id="error1">{{error}}</p>
+                </div>
+            </div>
+        {% elif user_upload != '' %}
+            <div class="row" id="upload_video_display">
+                <video width="100%" height="100%" controls>
+                    <source id="uploadedVideoSource" src="{{'static/uploads/video/' + user_upload}}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a class="btn btn-md btn-success mb-2" href="{{ url_for('waiting', data_type='video', name=encoded) }}" style="width: 100%; margin-top: 10px">Continue</a>
+            </div>
+        {% endif %}
+        <hr>
+        <form class="form-inline">
+            <div class="form-group col-12 col-md-3 col-lg-2">
+                <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" style="padding-right: 5px" title="Use the camera of your device to record a video"></i>
+                <label class="label">Record a video:</label>
+            </div>
+            <div class="col-12 col-md-6 col-lg-8">
+                {% if safari == 'True' %}
+                    <button type="button" class="btn btn-md btn-outline-danger mb-2" data-toggle="tooltip" data-placement="right" title="Recording is disabled in Safari, please use another browser." style="width: 100%">Record</button>
+                {% else %}
+                    <a class="btn btn-md btn-outline-danger mb-2" href="/camera" style="width: 100%">Record</a>
+                {% endif %}
+            </div>
+        </form>
+        <hr>
+        <form class="form-inline" method="POST" enctype="multipart/form-data">
+            <div class="form-group col-12 col-md-3 col-lg-2">
+                <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" style="padding-right: 5px" title="Only YouTube videos"></i>
+                <label class="form-label" for="videoLink">Link a video:</label>
+            </div>
+            <div class="col-12 col-md-6 col-lg-8">
+                <input type="text" class="form-control mb-2 mr-sm-2" id="videoLink" name="videoLink" style="width: 100%" value="{{video_link}}">
+            </div>
+            <div class="col-12 col-md-3 col-lg-2">
+                <button type="submit" class="btn btn-md btn-outline-secondary mb-2" id="upload_yt_btn" style="width: 100%">Upload</button>
+                <!-- <a id="upload_yt"><button class="btn btn-md btn-outline-secondary mb-2" id="upload_yt_btn" style="width: 100%" disabled>Upload</button></a> -->
+            </div>
+        </form>
+        {% if error != '' and video_link != '' %}
+            <div class="form-inline" id="link_error_form">
+                <div class="col-0 col-md-3 col-lg-2">
+                </div>
+                <div class="col-12 col-md-6 col-lg-8" style="height: 25px">
+                    <p style="color: #cb444b" id="error">{{error}}</p>
+                </div>
+            </div>
+        {% endif %}
+        {% if linked_video != '' %}
+            <div class="row" id="linked_video_display">
+                <video width="100%" height="100%" controls>
+                    <source id="linkedVideoSource" src="{{'static/uploads/video/' + linked_video}}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a class="btn btn-md btn-success mb-2" href="{{ url_for('waiting', data_type='video', name=encoded) }}" style="width: 100%; margin-top: 10px">Continue</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>$('[data-toggle="tooltip"]').tooltip();</script>
+    <script type="text/javascript" src="{{ url_for('static', filename='video.js') }}"></script>
+
+{% endblock content %}

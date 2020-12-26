@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Welcome</h1>
+    <p>On this Website, based on emotion, you can:</p>
+    <ul>
+        <li>upload, record or link a video to find a matching song</li>
+        <li>upload or link a song to find a matching video</li>
+    </ul>
+    <a class="btn btn-outline-success" href="/select_matching" style="width: 100%">Start</a>
+    <h3><br>How it works</h3>
+    <p>As mentioned above the user can either upload, record or link a video to find a matching song or upload or link a song to find a matching video.<br><br>
+    The uploaded file will be used by different neural network architectures
+    (<a href="https://de.mathworks.com/help/deeplearning/ref/resnet50.html" style="color: #444" target="_blank"><u>ResNet50</u></a>,
+    <a href="https://github.com/piergiaj/pytorch-i3d" style="color: #444" target="_blank"><u>I3D-RGB</u></a> and
+    <a href="https://github.com/ClementPinard/FlowNetPytorch" style="color: #444" target="_blank"><u>FlowNetS</u></a>) in case of video input or by software and model
+    (<a href="https://www.audeering.com/opensmile/" style="color: #444" target="_blank"><u>OpenSMILE</u></a> and
+    <a href="https://github.com/tensorflow/models/tree/master/research/audioset/vggish" style="color: #444" target="_blank"><u>VGGish</u></a>) in case of audio input,
+    to extract various features. These features are then processed by a model called
+    <a href="https://github.com/ivyha010/AttendAffectNet" style="color: #444" target="_blank"><u>AttendAffectNet</u></a> which calculates two emotion based
+    values called valence and arousal for each five second segment of the input. While valence describes the extent to which an emotion is positive or negative,
+    arousal refers to an emotions intensity. The resulting values are then compared to a data set of counterparts (audio:video) to find the most similar one.
+    It is possible here that multiple counterparts will be combined to satisfy longer inputs.<br><br>
+    For the matching Vimotion uses different algorithms which the user can select after clicking "Start". Brute-force is not available because of its poor scaling.</p>
+    <h3><br>About</h3>
+    <p>This Website was created by Marius Bange as part of his Bachelor Thesis at the Goethe-University in Frankfurt am Main, Germany. The code can be found
+    <a href="https://github.com/Kuehlhausvogel/Vimotion" style="color: #444" target="_blank"><u>here</u></a>.</p>
+{% endblock content %}
