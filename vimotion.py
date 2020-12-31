@@ -425,7 +425,7 @@ def extract_features():
                 os.system("python3.7 Model/FlowNetS/feature_extraction_FlowNetS.py '" + folder + "' '64'")
                 os.system("python3.7 Model/AttendAffectNet/video_model_arousal.py '" + folder + "' '64'")
                 os.system("python3.7 Model/AttendAffectNet/video_model_valence.py '" + folder + "' '64'")
-                os.system("python3.7 Model/ResNet50/feature_extraction_resnet50.py '" + folder + "' '" + str(extension) + "'")
+                os.system("python3.7 Model/ResNet50/feature_extraction_ResNet50.py '" + folder + "' '" + str(extension) + "'")
                 os.system("python3.7 Model/I3D_RGB/feature_extraction_I3D_RGB.py '" + folder + "' '" + str(extension) + "'")
                 os.system("python3.7 Model/FlowNetS/feature_extraction_FlowNetS.py '" + folder + "' '" + str(extension) + "'")
                 os.system("python3.7 Model/AttendAffectNet/video_model_arousal.py '" + folder + "' '" + str(extension) + "'")
