@@ -17,7 +17,7 @@ from videoprops import get_video_properties #For getting video file properties (
 global_frame = None
 video_camera = None
 
-application = app = Flask(__name__)
+app = Flask(__name__)
 app.config['SECRET_KEY'] = 'bachelor 2020'
 
 
